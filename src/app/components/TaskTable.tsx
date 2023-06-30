@@ -1,9 +1,12 @@
+'use client'
 import { Text, Table, Button, Card, CardBody, CardFooter, Heading, Stack, Image, Checkbox, Flex, FormControl, FormLabel, Input, Link, Select } from '@chakra-ui/react'
 import { Formik } from 'formik';
 import React from 'react'
 
-const TaskTable = () => {
-  return (
+const TaskTable = async () => {
+
+
+return (
     <Card p={15}
       direction={{ base: 'column', sm: 'row' }}
       overflow='hidden'
