@@ -1,4 +1,4 @@
-import { Text, Table, Button, Card, CardBody, CardFooter, Heading, Stack, Image, Checkbox, Flex, FormControl, FormLabel, Input, Link } from '@chakra-ui/react'
+import { Text, Table, Button, Card, CardBody, CardFooter, Heading, Stack, Image, Checkbox, Flex, FormControl, FormLabel, Input, Link, Select } from '@chakra-ui/react'
 import { Formik } from 'formik';
 import React from 'react'
 
@@ -21,98 +21,86 @@ const TaskTable = () => {
         </CardBody>
         <Formik
 
-          initialValues={{ email: '', password: '' }}
-
+          initialValues={{ task: '', date: '', time: '' }}
           validate={values => {
-
             const errors: any = {
-
             };
-
-
-            if (!values.email) {
-
+            if (!values.task) {
               errors.email = 'Required';
-
-            } else if (
-
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-
-            ) {
-
-              errors.email = 'Invalid email address';
-
             }
-
             return errors;
-
           }}
-
           onSubmit={(values, { setSubmitting }) => {
-
             setTimeout(() => {
-
               alert(JSON.stringify(values, null, 2));
-
               setSubmitting(false);
-
             }, 400);
-
           }}
-
         >
           {({
 
             values,
-
             errors,
-
             touched,
-
             handleChange,
-
             handleBlur,
-
             handleSubmit,
-
             isSubmitting,
-
-            /* and other goodies */
 
           }) => (
             <form onSubmit={handleSubmit}>
 
-                <Flex p={8} flex={1} align={'center'} justify={'center'}>
-                  <Stack spacing={4} w={'full'} maxW={'md'}>
-                    <Heading fontSize={'2xl'}>Sign in to your account</Heading>
-                    <FormControl id="email">
-                      <FormLabel>Email address</FormLabel>
-                      <Input type="email" onChange={handleChange} value={values.email} />
-                    </FormControl>
-                    <FormControl id="password">
-                      <FormLabel>Password</FormLabel>
-                      <Input type="password" onChange={handleChange} value={values.password} />
-                    </FormControl>
-                    <Stack spacing={6}>
-                      <Stack
-                        direction={{ base: 'column', sm: 'row' }}
-                        align={'start'}
-                        justify={'space-between'}>
-                        <Checkbox>Remember me</Checkbox>
-                        <Link color={'blue.500'}>Forgot password?</Link>
-                      </Stack>
-                      <Button colorScheme={'blue'} variant={'solid'} type="submit" disabled={isSubmitting}>
-                        Add task
-                      </Button>
+              <Flex p={8} flex={1} align={'center'} justify={'center'}>
+                <Stack spacing={4} w={'full'} maxW={'md'}>
+                  <FormControl id="task">
+                    <FormLabel>Task</FormLabel>
+                    <Input type="text" onChange={handleChange} value={values.task} />
+                  </FormControl>
+                  <FormControl id="date">
+                    <FormLabel>date</FormLabel>
+                    <Input type="date" onChange={handleChange} value={values.date} />
+                  </FormControl>
+                  <Stack spacing={6}>
 
+                    <Button colorScheme={'blue'} variant={'solid'} type="submit" disabled={isSubmitting}>
+                      Add task
+                    </Button>
 
-                    </Stack>
                   </Stack>
-                </Flex>
-                <Flex flex={1}>
-  
-                </Flex>
-           
+                </Stack>
+              </Flex>
+              <Flex flex={1}>
+
+              </Flex>
+              <FormControl id="time">
+                <FormLabel>date</FormLabel>
+                <Select id="time" placeholder='Select option' onChange={handleChange}>
+                  <option value='01'>01:00</option>
+                  <option value='02'>02:00</option>
+                  <option value='03'>03:00</option>
+                  <option value='04'>04:00</option>
+                  <option value='05'>05:00</option>
+                  <option value='06'>06:00</option>
+                  <option value='07'>07:00</option>
+                  <option value='08'>08:00</option>
+                  <option value='09'>09:00</option>
+                  <option value='10'>10:00</option>
+                  <option value='11'>11:00</option>
+                  <option value='12'>12:00</option>
+                  <option value='13'>13:00</option>
+                  <option value='14'>14:00</option>
+                  <option value='15'>15:00</option>
+                  <option value='16'>16:00</option>
+                  <option value='17'>17:00</option>
+                  <option value='18'>18:00</option>
+                  <option value='19'>19:00</option>
+                  <option value='20'>20:00</option>
+                  <option value='21'>21:00</option>
+                  <option value='22'>22:00</option>
+                  <option value='23'>23:00</option>
+                  <option value='24'>24:00</option>
+                </Select>
+              </FormControl>
             </form>)}
         </Formik>
         <CardFooter>
@@ -120,6 +108,7 @@ const TaskTable = () => {
         </CardFooter>
       </Stack>
     </Card>
+
   )
 }
 
