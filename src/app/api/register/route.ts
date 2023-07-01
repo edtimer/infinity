@@ -9,14 +9,14 @@ type Data = {
 }
 export async function POST(request: Request) {
     //we extract email and password from request
-    const { email, password } = await request.json()
+    const { email, password, firstName } = await request.json()
 
     const checkIfUserExist = await prisma.user.findUnique({ where: { email: email } })
     if (!checkIfUserExist) {
         const newUser = await prisma.user.create({
             data: {
                 email: email,
-                //password can be hashed if needed
+                name: firstName,
                 password: password,
             }
         })

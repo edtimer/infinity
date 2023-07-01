@@ -24,12 +24,12 @@ return res.json()
 }
 const Todo =  () => {
 
-  const{data:session,status} = useSession({
-    required:true
-  })
-  if(status==='loading'){
-    return <></>
-  }
+  // const{data:session,status} = useSession({
+  //   required:true
+  // })
+  // if(status==='loading'){
+  //   return <></>
+  // }
 // const session = await getServerSession(authOptions)
 
 // if(!session){
