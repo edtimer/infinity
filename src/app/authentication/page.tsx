@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import WithSubnavigation from '../components/Navbar';
 import { Formik } from 'formik';
+import { signIn } from 'next-auth/react';
 
 export default function Authentication() {
   return (
@@ -48,14 +49,16 @@ export default function Authentication() {
         }}
 
         onSubmit={(values, { setSubmitting }) => {
+         const email = values.email;
+         const password = values.password;
+          signIn("auth", { email,password});
+          // setTimeout(() => {
 
-          setTimeout(() => {
+          //   alert(JSON.stringify(values, null, 2));
 
-            alert(JSON.stringify(values, null, 2));
+          //   setSubmitting(false);
 
-            setSubmitting(false);
-
-          }, 400);
+          // }, 400);
 
         }}
 
